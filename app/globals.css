@@ -1,26 +1,341 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-dark-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-dark-bg text-white antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-white;
+    line-height: 1.2;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-medium;
+  }
+  
+  p {
+    @apply text-gray-300 leading-relaxed;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-dark-bg rounded;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Component Styles */
+@layer components {
+  /* Logo */
+  .logo {
+    @apply text-2xl font-extrabold text-primary-500 tracking-tight;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold py-3 px-6 rounded-3xl transition-all duration-200 hover:scale-105 hover:shadow-glow focus:scale-105 focus:shadow-glow disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+  
+  .btn-secondary {
+    @apply border border-primary-500 text-primary-400 font-semibold py-3 px-6 rounded-3xl transition-all duration-200 hover:bg-primary-500 hover:text-white hover:scale-105 focus:bg-primary-500 focus:text-white focus:scale-105;
+  }
+  
+  .btn-ghost {
+    @apply text-gray-300 font-medium py-2 px-4 rounded-lg transition-all duration-200 hover:bg-gray-800 hover:text-white focus:bg-gray-800 focus:text-white;
+  }
+  
+  /* Form Elements */
+  .input-field {
+    @apply bg-dark-card border border-dark-border text-white placeholder-gray-400 rounded-lg px-4 py-3 transition-all duration-200 focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
+  }
+  
+  .textarea-field {
+    @apply bg-dark-card border border-dark-border text-white placeholder-gray-400 rounded-lg px-4 py-3 transition-all duration-200 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 resize-none;
+  }
+  
+  /* Cards */
+  .card {
+    @apply bg-dark-card border border-dark-border rounded-xl p-6 transition-all duration-200 hover:border-dark-border-light;
+  }
+  
+  .card-hover {
+    @apply bg-dark-card border border-dark-border rounded-xl p-6 transition-all duration-200 hover:border-primary-500 hover:shadow-glow cursor-pointer;
+  }
+  
+  /* Glass effect */
+  .glass-card {
+    @apply glass rounded-xl backdrop-blur-md;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply text-gray-300 font-medium transition-all duration-200 hover:text-white relative;
+  }
+  
+  .nav-link::after {
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300;
+    content: '';
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-sm font-medium rounded-full;
+  }
+  
+  .badge-primary {
+    @apply bg-primary-500 text-white;
+  }
+  
+  .badge-secondary {
+    @apply bg-gray-700 text-gray-200 border border-gray-600;
+  }
+  
+  .badge-outline {
+    @apply border border-gray-500 text-gray-300 hover:bg-gray-700 transition-colors duration-200;
+  }
+  
+  /* Loading skeleton */
+  .skeleton {
+    @apply animate-pulse bg-gray-700 rounded;
+  }
+  
+  /* Tooltip */
+  .tooltip {
+    @apply absolute z-50 px-3 py-2 text-sm font-medium text-white bg-gray-900 border border-gray-600 rounded-lg shadow-lg opacity-0 invisible transition-all duration-200;
+  }
+  
+  .tooltip-show {
+    @apply opacity-100 visible;
+  }
 }
+
+/* Utility Classes */
+@layer utilities {
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-secondary {
+    @apply bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent;
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:scale-105 hover:-translate-y-1;
+  }
+  
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-glow;
+  }
+  
+  /* Backdrop effects */
+  .backdrop-glass {
+    backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(17, 24, 39, 0.8);
+  }
+  
+  /* Custom grid layouts */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  
+  /* Safe area utilities for mobile */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Additional keyframes */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-progress {
+  animation: progress linear forwards;
+}
+
+/* Accessibility improvements */
+@layer base {
+  /* Screen reader only content */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Skip links */
+  .skip-link {
+    @apply absolute top-0 left-0 z-[100] bg-primary-500 text-white px-4 py-2 rounded-br-lg transform -translate-y-full transition-transform focus:translate-y-0;
+  }
+  
+  /* Focus management */
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+  
+  /* Improved contrast for better readability */
+  .high-contrast {
+    filter: contrast(1.2);
+  }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-float,
+  .animate-pulse-slow,
+  .animate-bounce-gentle {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    @apply border-2 border-white;
+  }
+  
+  .btn-primary {
+    @apply border-2 border-white;
+  }
+  
+  .glass, .glass-light {
+    @apply bg-gray-900 border-2 border-gray-300;
+  }
+  
+  .text-gray-400, .text-gray-300 {
+    @apply text-gray-200;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+@layer components {
+  .focus-outline {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-bg rounded;
+  }
+  
+  button, a, input, textarea, select {
+    @apply focus-outline;
+  }
+  
+  /* Improved button states for accessibility */
+  .btn-primary:disabled,
+  .btn-secondary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+  
+  .btn-primary:disabled:hover,
+  .btn-secondary:disabled:hover {
+    @apply scale-100 shadow-none;
+  }
+}
+
+
