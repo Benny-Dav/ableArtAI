@@ -53,11 +53,11 @@ export default function ExamplesPage() {
                 height={400}
                 className="object-cover w-full h-64"
               />
-              <div className="p-3 text-sm text-gray-300">
+              {/* <div className="p-3 text-sm text-gray-300">
                 <p className="text-xs text-gray-500">
                   {new Date(gen.created_at).toLocaleString()}
                 </p>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
