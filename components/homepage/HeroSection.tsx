@@ -9,18 +9,18 @@ import Image from "next/image";
 const heroImages = [
   {
     id: 1,
-    url: 'https://replicate.delivery/xezq/M8xf6TII57zLWyj9RApZtecVu3XE6T1s78Ecpg2Np04MrpnVA/tmp6fpzc81e.jpeg',
-    alt: 'AI generated artistic portrait'
+    url: 'https://fhfwovxgyxmjkvtrldgz.supabase.co/storage/v1/object/public/generatedImagesBucket/71069623-5e4b-4034-8507-bddca396f938/1762716970839-va3c1ea2kxrmc0ctd8fajpxgmc.jpg',
+    alt: 'able art'
   },
   {
     id: 2,
-    url: 'https://replicate.delivery/xezq/ZCZozStRqxb3AJqfi6fgoN0k9GBpMWJ97QojoqhfvJerUnesC/tmpm707q6vx.jpeg',
-    alt: 'AI generated creative artwork'
+    url: 'https://fhfwovxgyxmjkvtrldgz.supabase.co/storage/v1/object/public/generatedImagesBucket/71069623-5e4b-4034-8507-bddca396f938/1762688891390-xx1y1weeysrmc0ctd1rv33gcx0.jpg',
+    alt: 'able art'
   },
   {
     id: 3,
-    url: 'https://replicate.delivery/xezq/eR4P3fMiozh2qk1M56Y0hBIU5VIpeWKilbi5UlneKoNfbP9sC/tmpubsnfhfk.jpeg',
-    alt: 'AI generated landscape scene'
+    url: 'https://fhfwovxgyxmjkvtrldgz.supabase.co/storage/v1/object/public/generatedImagesBucket/71069623-5e4b-4034-8507-bddca396f938/1762715854078-ypsz4chttnrme0ctd86rf3m37m.jpg',
+    alt: 'able art'
   },
 ];
 
@@ -84,14 +84,12 @@ export default function HeroSection() {
           <div className="space-y-6">
             <h1 className="font-extrabold text-4xl sm:text-3xl lg:text-6xl xl:text-7xl leading-tight">
               <span className="text-gradient">Transform Ideas </span>
-              <br className="hidden lg:flex"/>
+              <br className="hidden lg:flex" />
               into <span className="text-white">Stunning Images</span>
             </h1>
 
-            <p className="text-gray-300 text-lg lg:text-xl max-w-xl leading-relaxed">
-              Experience the future of image creation with AI-powered generation.
-              Upload your image or describe your vision, and watch magic happen in seconds.
-            </p>
+            <p className="text-gray-300 text-lg lg:text-xl max-w-xl leading-relaxed">Experience the future of image creation with AI-powered generation.</p>
+            <p className="text-gray-300 text-lg lg:text-xl max-w-xl leading-relaxed hidden md:flex">Upload your image or describe your vision, and watch magic happen in seconds.</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -116,18 +114,19 @@ export default function HeroSection() {
         </div>
 
         {/* images stack */}
-        <div className=" relative flex items-center justify-center mt-16 lg:mt-0 lg:ml-16 perspective-1000 animate-slide-in">
-          <div className="relative flex flex-row -space-x-40 lg:-space-x-40 transform-style-preserve-3d ">
+        <div className="relative flex items-center justify-center mt-16 lg:mt-0 lg:ml-16 perspective-1000 animate-slide-in">
+          <div className="relative flex flex-row -space-x-12 lg:-space-x-12 transform-style-preserve-3d sm:px-8">
             {heroImages.map((image, index) => {
               const center = Math.floor((heroImages.length - 1) / 2);
               const offset = index - center;
+              const isCenter = offset === 0;
               return (
                 <div
                   key={image.id}
-                  className="relative w-64 h-72 lg:w-84 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 hover:rotate-y-0 hover:translate-z-20 transition-transform duration-500"
+                  className="relative w-48 h-56 lg:w-84 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 hover:translate-z-20 transition-transform duration-500"
                   style={{
-                    transform: `rotateY(${offset * 10}deg) translateZ(${-Math.abs(offset) * 30}px)`,
-                    zIndex: index,
+                    transform: `translateY(${isCenter ? 0 : 20}px) translateZ(${isCenter ? 0 : -50}px)`,
+                    zIndex: isCenter ? 20 : 10,
                   }}
                 >
                   <Image
@@ -138,10 +137,6 @@ export default function HeroSection() {
                     sizes="(max-width: 768px) 320px, 384px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-
-                 
-
-                 
                 </div>
               );
             })}
