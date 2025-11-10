@@ -29,7 +29,7 @@ export default function RootLayout({
       <body suppressHydrationWarning={true} className="bg-dark-bg text-white">
         <AuthProvider>
           <ToastProvider>
-            <main className="min-h-screen">
+            <main className="min-h-screen ">
               {children}
             </main>
           </ToastProvider>

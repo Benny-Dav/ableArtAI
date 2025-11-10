@@ -14,7 +14,7 @@ const heroImages = [
   },
   {
     id: 2,
-    url: 'https://fhfwovxgyxmjkvtrldgz.supabase.co/storage/v1/object/public/generatedImagesBucket/71069623-5e4b-4034-8507-bddca396f938/1762688891390-xx1y1weeysrmc0ctd1rv33gcx0.jpg',
+    url: 'https://fhfwovxgyxmjkvtrldgz.supabase.co/storage/v1/object/public/generatedImagesBucket/71069623-5e4b-4034-8507-bddca396f938/1762688976503-3z71358y1hrm80ctd1srbyv6qm.jpg',
     alt: 'able art'
   },
   {
@@ -66,7 +66,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div>
+    <div className="">
       <section className="relative w-screen min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-6 px-6 lg:px-8 bg-gradient-to-br from-dark-bg via-dark-surface to-dark-bg overflow-hidden">
         {/* hero text */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

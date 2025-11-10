@@ -222,22 +222,22 @@ export default function Navbar() {
                                             <div className='absolute right-0 top-14 glass-card min-w-[180px] animate-scale-in'>
                                                 <div className='p-4 border-b border-gray-700'>
                                                     <p className='text-white font-medium truncate'>{user.email}</p>
-                                                    <p className='text-gray-400 text-sm flex items-center gap-1 mt-1'>
+                                                    {/* <p className='text-gray-400 text-sm flex items-center gap-1 mt-1'>
                                                         <Star size={14} className="text-primary-500" />
                                                         Pro Member
-                                                    </p>
+                                                    </p> */}
                                                 </div>
                                                 <ul className='p-2'>
-                                                    <li>
+                                                    {/* <li>
                                                         <button className='w-full flex items-center gap-3 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors py-2 px-3 rounded-lg'> 
                                                             <User size={16} /> Profile
                                                         </button>
-                                                    </li>
-                                                    <li>
+                                                    </li> */}
+                                                    {/* <li>
                                                         <button className='w-full flex items-center gap-3 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors py-2 px-3 rounded-lg'> 
                                                             <Clock size={16} /> History
                                                         </button>
-                                                    </li>
+                                                    </li> */}
                                                     <li className='border-t border-gray-700 mt-2 pt-2'>
                                                         <button 
                                                             onClick={handleLogout}
@@ -322,14 +322,14 @@ export default function Navbar() {
 
                                     {/* Profile actions */}
                                     <div className='space-y-2'>
-                                        <button className='w-full flex items-center gap-3 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors py-3 px-4 rounded-lg'> 
+                                        {/* <button className='w-full flex items-center gap-3 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors py-3 px-4 rounded-lg'> 
                                             <User size={18} /> 
                                             <span>Profile Settings</span>
-                                        </button>
-                                        <button className='w-full flex items-center gap-3 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors py-3 px-4 rounded-lg'> 
+                                        </button> */}
+                                        {/* <button onClick={()=> router.push('/profile/my-generations')} className='w-full flex items-center gap-3 text-gray-300 hover:text-white hover:bg-gray-800 transition-colors py-3 px-4 rounded-lg'> 
                                             <Clock size={18} /> 
                                             <span>Generation History</span>
-                                        </button>
+                                        </button> */}
                                         <button 
                                             onClick={handleLogout}
                                             className='w-full flex items-center gap-3 text-gray-300 hover:text-red-400 transition-colors py-3 px-4 rounded-lg'

@@ -20,6 +20,7 @@ export default function ExamplesSection() {
       const { data, error } = await supabase
         .from("generations")
         .select("id, storage_url, created_at")
+        .eq('showInGallery', true)
         .order("created_at", { ascending: false });
 
       if (error) console.error("Error fetching generations:", error);
