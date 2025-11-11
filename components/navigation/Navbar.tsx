@@ -75,7 +75,7 @@ export default function Navbar() {
     const navItems = [
         { link: "Home", path: "/" },
         { link: "Image Editor", path: "/editor" },
-        { link: "Examples", path: "/examples" },
+        
     ];
 
     const handleNavClick = (path: string) => {
@@ -186,12 +186,12 @@ export default function Navbar() {
                         {/* Right side items */}
                         <div className='flex items-center gap-4'>
                             {/* Theme toggle */}
-                            <button 
+                            {/* <button 
                                 className='p-2 rounded-lg hover:bg-gray-800 transition-colors duration-200'
                                 aria-label="Toggle dark mode"
                             >
                                 <Moon stroke="white" size={20} />
-                            </button>
+                            </button> */}
 
                             {user ? (
                                 <>
@@ -313,7 +313,7 @@ export default function Navbar() {
                             {user && (
                                 <>
                                     {/* Credits display */}
-                                    <div className="glass-light rounded-xl p-4 flex items-center gap-3">
+                                    <div className="glass-light rounded-xl p-4 flex items-center gap-3 ">
                                         <Zap color="#cb50ff" size={20} />
                                         <span className="text-white font-medium">
                                             {creditsLoading ? 'Loading...' : `${credits ?? 0} credits available`}
@@ -342,12 +342,12 @@ export default function Navbar() {
                             )}
 
                             {!user && (
-                                <div className='space-y-3'>
-                                    <Link href="/signup" className="btn-primary w-full justify-center" onClick={() => setOpenMenu(false)}>
+                                <div className='space-y-3 flex flex-col justify-center items-center'>
+                                    <Link href="/signup" className="btn-primary w-full flex justify-center items-center gap-2" onClick={() => setOpenMenu(false)}>
                                         <UserPlus size={18} />
                                         Create Account
                                     </Link>
-                                    <Link href="/login" className="btn-secondary w-full justify-center" onClick={() => setOpenMenu(false)}>
+                                    <Link href="/login" className="btn-secondary w-full flex justify-center items-center gap-2" onClick={() => setOpenMenu(false)}>
                                         <LogIn size={18} />
                                         Sign In
                                     </Link>
