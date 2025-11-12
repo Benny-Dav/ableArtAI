@@ -377,6 +377,7 @@ export default function InputBox({ setGeneratedImage }: InputBoxProps) {
             </label>
             <div className="sm:grid sm:grid-cols-2 space-x-3 space-y-2 lg:flex gap-3">
               {themes.map((theme) => (
+              
                 <button 
                   key={theme.id} 
                   type="button" 
